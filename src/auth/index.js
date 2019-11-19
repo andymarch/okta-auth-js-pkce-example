@@ -1,5 +1,6 @@
 import OktaAuth from '@okta/okta-auth-js';
 import router from '../router';
+import crypto from 'isomorphic-webcrypto'
 import 'whatwg-fetch'
 
 const ISSUER = process.env.VUE_APP_OKTA_CLIENT_ORGURL + '/oauth2/default';

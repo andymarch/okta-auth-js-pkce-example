@@ -14,6 +14,7 @@
     "connect-history-api-fallback": "^1.6.0",
     "core-js": "^2.6.5",
     "express": "^4.17.1",
+    "isomorphic-webcrypto": "^2.3.2",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
     "whatwg-fetch": "^3.0.0"
