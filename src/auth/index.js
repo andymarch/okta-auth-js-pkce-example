@@ -19,6 +19,12 @@ const oktaAuth = new OktaAuth({
 });
 
 export function validateAccess(to, from, next) {
+    if(!oktaAuth.features.isPKCESupported()){
+        console.log("No browser PKCE support")
+    }
+    else{
+        console.log("Browser supports PKCE")
+    }
     getIdToken()
     .then(function(token) {
         if (token) {
@@ -38,6 +44,7 @@ export function loginOkta(grantType) {
     oktaAuth.options.grantType = grantType;
     oktaAuth.token.getWithRedirect({
         responseType: responseTypes[grantType],
+        pkce: true,
         scopes: ['openid', 'profile', 'email']
     });
 }
