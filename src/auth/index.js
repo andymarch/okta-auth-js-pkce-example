@@ -26,6 +26,7 @@ export function validateAccess(to, from, next) {
     else{
         console.log("Browser supports PKCE")
     }
+    isTokenVerifySupported()
     getIdToken()
     .then(function(token) {
         if (token) {
@@ -40,6 +41,19 @@ export function validateAccess(to, from, next) {
     })
     .catch(console.error);
 }
+
+export function isTokenVerifySupported () {
+    if(typeof crypto !== 'undefined')
+    {
+        console.log("typof crypto undef")
+    }
+    if(crypto.subtle){
+        console.log("Crypto.subtle")
+    }
+    if(typeof Uint8Array !== 'undefined'){
+        console.log("typof Uint8Array undef")
+    }
+};
 
 export function loginOkta(grantType) {
     oktaAuth.options.grantType = grantType;
