@@ -1,5 +1,4 @@
 // server.js
-import 'whatwg-fetch'
 var express = require('express');
 const history = require('connect-history-api-fallback');
 var path = require('path');
