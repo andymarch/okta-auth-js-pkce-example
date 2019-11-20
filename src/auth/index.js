@@ -21,6 +21,33 @@ const oktaAuth = new OktaAuth({
     redirectUri: REDIRECT_URL
 });
 
+console.log("polyfill checking")
+if (!Object.is) {
+    // eslint-disable-next-line no-extend-native
+    Object.is = function is(x, y) {
+      if (x === y) {
+        return x !== 0 || 1 / x === 1 / y;
+      }
+      return x !== x && y !== y; // eslint-disable-line no-self-compare
+    };
+  }
+if (!Array.prototype.includes) {
+    console.log("Polyfill was required")
+    // eslint-disable-next-line no-extend-native
+    Array.prototype.includes = function includes(value) {
+        console.log("polyfill fired")
+      for (let i = 0; i < this.length; i += 1) {
+        if (Object.is(this[i], value)) {
+          return true;
+        }
+      }
+      return false;
+    };
+  }
+  else{
+      console.log("no polyfill required")
+  }
+
 export function validateAccess(to, from, next) {
     if(!oktaAuth.features.isPKCESupported()){
         console.log("No browser PKCE support")
