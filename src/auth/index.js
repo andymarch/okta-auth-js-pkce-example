@@ -31,7 +31,7 @@ if (!Object.is) {
     };
   }
 if (!Array.prototype.includes) {
-    console.log("Polyfill was required")
+    console.log("Array Polyfill was required")
     // eslint-disable-next-line no-extend-native
     Array.prototype.includes = function includes(value) {
         console.log("polyfill fired")
@@ -44,8 +44,24 @@ if (!Array.prototype.includes) {
     };
   }
   else{
-      console.log("no polyfill required")
+      console.log("no array polyfill required")
   }
+
+  if (!String.prototype.includes) {
+    console.log("String Polyfill was required")
+    String.prototype.includes = function(search, start) {
+      'use strict';
+  
+      if (search instanceof RegExp) {
+        throw TypeError('first argument must not be a RegExp');
+      } 
+      if (start === undefined) { start = 0; }
+      return this.indexOf(search, start) !== -1;
+    };
+  }  else{
+    console.log("no string polyfill required")
+}
+  
 
 export function validateAccess(to, from, next) {
     if(!oktaAuth.features.isPKCESupported()){
