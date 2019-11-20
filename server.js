@@ -14,6 +14,7 @@ app.use(serveStatic(__dirname + "/dist"));
 
 //IE11 polyfill for includes
 if (!String.prototype.includes) {
+    console.log("need includes polyfill")
     String.prototype.includes = function(search, start) {
       'use strict';
     console.log("IE11 polyfill")
@@ -23,6 +24,9 @@ if (!String.prototype.includes) {
       if (start === undefined) { start = 0; }
       return this.indexOf(search, start) !== -1;
     };
+  }
+  else{
+      console.log("includes polyfill not needed")
   }
 //end polyfill
 
