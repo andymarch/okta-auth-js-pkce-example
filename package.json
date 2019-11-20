@@ -15,6 +15,7 @@
     "core-js": "^2.6.5",
     "express": "^4.17.1",
     "isomorphic-webcrypto": "^2.3.2",
+    "polyfill-array-includes": "^2.0.0",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
     "whatwg-fetch": "^3.0.0"
